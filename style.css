@@ -53,6 +53,19 @@ nav a:hover {
     padding: 80px 20px;
 }
 
+.hero {
+    width: 150px;
+    height: 150px;
+}
+
+/* 📱 VERSION MOBILE */
+@media (max-width: 768px) {
+    .hero {
+        width: 220px;
+        height: 220px;
+    }
+}
+
 /* PHOTO WOW */
 .ma_photo {
     width: 100px;
