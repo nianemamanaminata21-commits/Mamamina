@@ -27,9 +27,17 @@
         <h2>Contactez-moi</h2>
 
         <form>
+            <input type="text" placeholder="Prénom" required>
             <input type="text" placeholder="Nom" required>
             <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message"></textarea>
+            <select name="sujet" id="sujet">
+                <option value="">Sélectionnez un sujet</option>
+                <option value="information">Demande d'information</option>
+                <option value="projet">Demande de projet</option>
+                <option value="autre">Autre</option>
+            </select>
+            
+            <textarea placeholder="Votre message..." rows="5" required></textarea>
             <button type="submit">Envoyer</button>
         </form>
     </section>

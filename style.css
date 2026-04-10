@@ -209,6 +209,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .contact input,
@@ -218,6 +219,7 @@ form {
     padding: 20px;
     border: 5px solid rgb(12, 4, 121);
     border-radius: 20px;
+    text-align: center;
 }
 
 .contact button {
@@ -463,6 +465,7 @@ footer p {
     padding: 10px;
     border: none;
     border-radius: 10px;
+    text-align: center;
 }
 
 .form-contact button {
@@ -472,6 +475,7 @@ footer p {
     background: #38bdf8;
     color: white;
     cursor: pointer;
+    text-align: center;
 }
 
 /* FORMULAIRE RECHERCHE */
