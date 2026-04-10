@@ -355,28 +355,28 @@ form {
 }
 
 .competences {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
     text-align: center;
-    flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
 }
 
-.competences span {
+.skills span {
     background: #1e293b;
-    padding: 10px 15px;
     border-radius: 20px;
-    margin: 5px;
     font-size: 14px;
+        padding: 10px 15px;
+
 }
+
+
 
 @media (max-width: 768px) {
     .competences {
-        flex-direction: column;
+    
         align-items: center;
     }
-    .competences span {
+    .skills span {
         width: 80%;
         text-align: center;
     }
@@ -385,16 +385,25 @@ form {
 }
 
 .skills {
-    display: flex;
+    text-align: center;
     justify-content: center;
     gap: 15px;
     padding: 20px;
+    margin: 20px auto;
+    flex-wrap: wrap;
+    gap: 20px;
+
 }
 
 .skills span {
     background: #1e293b;
     padding: 10px 15px;
     border-radius: 20px;
+        font-size: 14px;
+        text-align: center;
+        display: inline-block;
+        margin: 8px 10px;
+    
 }
 .parcours-ajout {
     background: #0f172a;
