@@ -446,6 +446,56 @@ footer p {
     color: #38bdf8;
     font-weight: bold;
 }
+
+
+/* FORMULAIRE CONTACT */
+.form-contact {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px auto;
+    gap: 10px;
+    text-align: center;
+}
+
+.form-contact input,
+.form-contact textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-contact button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #38bdf8;
+    color: white;
+    cursor: pointer;
+}
+
+/* FORMULAIRE RECHERCHE */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search-form input {
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    border: none;
+}
+
+.search-form button {
+    padding: 10px;
+    border-radius: 10px 10px ;
+    border: none;
+    background: #38bdf8;
+    color: white;
+}
+
+
 @media screen and (max-width: 768px) {
     header {
         flex-direction: column;
