@@ -48,7 +48,6 @@ nav a:hover {
     color: #38bdf8;
 }
 
-/* HERO */
 .hero {
     text-align: center;
     padding: 80px 20px;
@@ -99,7 +98,6 @@ nav a:hover {
     transform: scale(1.1);
 }
 
-/* CENTER */
 .center {
     text-align: center;
     padding: 40px;
@@ -116,7 +114,6 @@ nav a:hover {
     transition: 0.4s;
 }
 
-/* GRID PROJETS */
 .grid {
     display: flex;
     justify-content: center;
@@ -125,7 +122,6 @@ nav a:hover {
     padding: 40px;
 }
 
-/* CARD */
 .card {
     background: #1e293b;
     padding: 20px;
@@ -237,12 +233,10 @@ form {
     transform: scale(1.1);
     box-shadow: 0 0 15px #00e0ff;
 }
-/* CONTAINER */
 .socials {
     margin-top: 20px;
 }
 
-/* IMAGES */
 .socials img {
     width: 50px;
     height: 50px;
@@ -254,7 +248,6 @@ form {
     box-shadow: 0 0 10px #38bdf8;
 }
 
-/* HOVER (effet WAOUH) */
 .socials img:hover {
     transform: scale(1.2);
     box-shadow: 0 0 20px #38bdf8;
@@ -309,10 +302,8 @@ form {
     grid-template-columns: repeat(2, 1fr);
     /* 2 colonnes */
     gap: 40px;
-    /* espace plus large entre les cartes */
     padding: 50px;
     max-width: 1200px;
-    /* largeur plus grande */
     margin: auto;
 }
 
@@ -323,15 +314,12 @@ form {
     transition: 0.3s;
     text-align: center;
     width: 100%;
-    /* occupe toute la colonne */
     min-height: 400px;
-    /* hauteur minimum plus grande */
 }
 
 .card img {
     width: 100%;
     height: 250px;
-    /* image plus grande */
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -352,7 +340,6 @@ form {
 @media (max-width: 768px) {
     .grid {
         grid-template-columns: 1fr;
-        /* une seule colonne sur petit écran */
     }
 }
 
@@ -450,7 +437,6 @@ footer p {
 }
 
 
-/* FORMULAIRE CONTACT */
 .form-contact {
     display: flex;
     flex-direction: column;
@@ -478,7 +464,6 @@ footer p {
     text-align: center;
 }
 
-/* FORMULAIRE RECHERCHE */
 .search-form {
     display: flex;
     justify-content: center;
