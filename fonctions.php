@@ -5,3 +5,4 @@ function champ_requis(string $valeur): bool {
 function nettoyer(string $valeur): string {
     return htmlspecialchars(trim($valeur));
 }
+?>
