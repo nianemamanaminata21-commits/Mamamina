@@ -7,7 +7,7 @@ function nettoyer(string $valeur): string {
 }
 function enregister_visite($pdo,$page){
     $ip=$_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'];
-    $stmt=$pdo->prepare("INSERT INTO visites (ip, page) VALUES (?, ?)");
+    $stmt=$pdo->prepare("INSERT INTO visites (adresse_ip, page) VALUES (?, ?)");
     $stmt->execute([$ip, $page]);
 }
 function generer_token_csrf(): string {
