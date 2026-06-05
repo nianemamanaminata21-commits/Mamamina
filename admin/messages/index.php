@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_id'])) {
     header('Location: ../connexion.php');
     exit;
 }
-$messages=$pdo->query('SELECT * FROM messages ORDER BY date DESC')->fetchAll(PDO::FETCH_ASSOC);
+$messages=$pdo->query('SELECT * FROM messages_contact ORDER BY date DESC')->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
