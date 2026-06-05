@@ -1,58 +1,18 @@
 <?php require 'composants/navigation.php'; ?>
 <?php
-require 'fonctions.php';
-$projets = [
-    [
-        'titre' => 'Projet Eclipse (Conversion / Exercices)',
-        'description' => 'Ce projet réalisé sur Eclipse consistait à effectuer des exercices de programmation, notamment des conversions et
-        manipulations de données. L’objectif était de mettre en pratique les notions de base en programmation, comme les
-        variables, les opérations et l’affichage des résultats. Ce travail m’a permis de renforcer ma logique et de mieux
-        comprendre le fonctionnement d’un programme simple.',
-        'image' => 'images/projet1.png',
-        'technologies' => ['Java', 'Eclipse']
-    ],
-    [
-        'titre' => 'Projet MySQL (Création de table)',
-        'description' => ' Ce projet consiste à créer et manipuler une base de données avec MySQL, notamment à travers la création d’une table.
-        J’ai utilisé des requêtes SQL comme CREATE TABLE pour définir la structure des données. Ce projet m’a permis de
-        comprendre les bases de la gestion de données et l’organisation d’une base de données relationnelle.',
-        'image' => 'images/projet3.jpeg',
-        'technologies' => ['MySQL', 'SQL']
-    ],
-    [
-        'titre' => 'Projet Arduino (Allumage de lampes)',
-        'description' => 'Ce projet consiste à programmer un système avec Arduino permettant d’allumer et d’éteindre des lampes. Il repose sur
-        l’utilisation de composants électroniques et la programmation du microcontrôleur pour contrôler les sorties selon des
-        conditions définies. Ce projet m’a permis de découvrir le fonctionnement des systèmes embarqués et d’interagir avec du
-        matériel électronique de manière concrète..',
-        'image' => 'images/projet4.png',
-        'technologies' => ['Arduino']
-    ]
-];
-
+session_start();
+require_once 'config/connexion.php';
+require_once 'fonctions.php';
+enregistrer_visite($pdo, 'projets');
 
 $mot_cle = nettoyer($_GET['recherche'] ?? '');
-$resultats = [];
 
 if ($mot_cle !== '') {
-    foreach ($projets as $projet) {
-        if (
-            stripos($projet['titre'], $mot_cle) !== false ||
-            stripos($projet['description'], $mot_cle) !== false
-        ) {
-            $resultats[] = $projet;
-        } else {
-            // Recherche aussi dans les technologies
-            foreach ($projet['technologies'] as $tech) {
-                if (stripos($tech, $mot_cle) !== false) {
-                    $resultats[] = $projet;
-                    break;
-                }
-            }
-        }
-    }
+    $stmt = $pdo->prepare('SELECT * FROM projets WHERE titre LIKE ? OR description LIKE ? ORDER BY date_creation DESC');
+    $stmt->execute(['%'.$mot_cle.'%', '%'.$mot_cle.'%']);
+    $resultats = $stmt->fetchAll();
 } else {
-    $resultats = $projets;
+    $resultats = $pdo->query('SELECT * FROM projets ORDER BY date_creation DESC')->fetchAll();
 }
 ?>
 <!DOCTYPE html>
@@ -84,32 +44,23 @@ if ($mot_cle !== '') {
 
 </form>
 <section class="grid">
-<?php foreach ($resultats as $projet) : ?>
-
-  
+<?php foreach ($resultats as $projet): ?>
 <div class="card">
-
-    <img src='<?= htmlspecialchars($projet["image"]) ?>'
-    alt='<?= htmlspecialchars($projet["titre"]) ?>'>
-
+    <?php if ($projet['image']): ?>
+    <img src="images/projets/<?= htmlspecialchars($projet['image']) ?>" 
+         alt="<?= htmlspecialchars($projet['titre']) ?>">
+    <?php endif; ?>
     <h3><?= htmlspecialchars($projet['titre']) ?></h3>
-
     <p><?= htmlspecialchars($projet['description']) ?></p>
-
-    <div class='technologies'>
-
-        <?php foreach ($projet['technologies'] as $tech) : ?>
-
-            <span class='badge'>
-                <?= htmlspecialchars($tech) ?>
-            </span>
-
+    <div class="technologies">
+        <?php foreach (explode(',', $projet['technologies']) as $tech): ?>
+            <span class="badge"><?= htmlspecialchars(trim($tech)) ?></span>
         <?php endforeach; ?>
-
     </div>
-
+    <?php if ($projet['lien']): ?>
+        <a href="<?= htmlspecialchars($projet['lien']) ?>" target="_blank">Voir le projet</a>
+    <?php endif; ?>
 </div>
-
 <?php endforeach; ?>
 </section>
 <?php if (empty($resultats)) : ?>
