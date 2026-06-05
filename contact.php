@@ -1,31 +1,58 @@
 <?php require 'composants/navigation.php'; ?>
-<?php require'fonctions.php';
-$erreurs  = [];
-$succes   = false;
-$prenom   = '';
-$nom      = '';
-$email    = '';
-$message  = '';
+<?php
+session_start();
+require_once 'config/connexion.php';
+require_once 'fonctions.php';
+enregistrer_visite($pdo, 'contact');
+
+$erreurs = [];
 $succes = false;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   $prenom = nettoyer($_POST['prenom'] ?? '');
-   $nom     = nettoyer($_POST['nom']     ?? '');
-   $email   = nettoyer($_POST['email']   ?? '');
-   $message = nettoyer($_POST['message'] ?? '');
- 
-   if (!champ_requis($prenom)){  $erreurs[] = 'Le prénom est obligatoire.';}
-   if (!champ_requis($nom))     {$erreurs[] = 'Le nom est obligatoire.';}
-   if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                                $erreurs[] = 'L\'adresse e-mail est invalide.';}
-   if (!champ_requis($message)) {$erreurs[] = 'Le message ne peut pas être vide.';}
- 
-   if (empty($erreurs)) {
-       $succes = true;
-   }
+$erreurs_demande = [];
+$succes_demande = false;
+
+// Formulaire contact
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_contact'])) {
+    verifier_token_csrf($_POST['csrf_token'] ?? '');
+    
+    $nom = nettoyer($_POST['nom'] ?? '');
+    $email = nettoyer($_POST['email'] ?? '');
+    $message = nettoyer($_POST['message'] ?? '');
+
+    if (!champ_requis($nom)) $erreurs[] = 'Le nom est obligatoire.';
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $erreurs[] = 'Email invalide.';
+    if (!champ_requis($message)) $erreurs[] = 'Le message est obligatoire.';
+
+    if (empty($erreurs)) {
+        $stmt = $pdo->prepare('INSERT INTO messages_contact (nom, email, message) VALUES (?, ?, ?)');
+        $stmt->execute([$nom, $email, $message]);
+        $succes = true;
+    }
 }
 
-?>
+// Formulaire demande de projet
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['form_demande'])) {
+    verifier_token_csrf($_POST['csrf_token'] ?? '');
 
+    $nom = nettoyer($_POST['nom'] ?? '');
+    $email = nettoyer($_POST['email'] ?? '');
+    $type_projet = nettoyer($_POST['type_projet'] ?? '');
+    $description = nettoyer($_POST['description'] ?? '');
+    $budget = nettoyer($_POST['budget'] ?? '');
+
+    if (!champ_requis($nom)) $erreurs_demande[] = 'Le nom est obligatoire.';
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $erreurs_demande[] = 'Email invalide.';
+    if (!champ_requis($type_projet)) $erreurs_demande[] = 'Le type de projet est obligatoire.';
+    if (!champ_requis($description)) $erreurs_demande[] = 'La description est obligatoire.';
+
+    if (empty($erreurs_demande)) {
+        $stmt = $pdo->prepare('INSERT INTO demandes_projet (nom, email, type_projet, description, budget) VALUES (?, ?, ?, ?, ?)');
+        $stmt->execute([$nom, $email, $type_projet, $description, $budget]);
+        $succes_demande = true;
+    }
+}
+
+$token = generer_token_csrf();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
