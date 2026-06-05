@@ -15,7 +15,7 @@ $projets = $pdo->query('SELECT * FROM projets ORDER BY date_creation DESC')->fet
 <head>
     <meta charset="UTF-8">
     <title>Gestion des projets</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <h1>Projets</h1>

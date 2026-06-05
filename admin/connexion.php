@@ -34,7 +34,7 @@ $token = generer_token_csrf();
 <head>
     <meta charset="UTF-8">
     <title>Connexion Admin</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <h1>Connexion</h1>

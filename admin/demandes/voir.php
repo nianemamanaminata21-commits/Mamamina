@@ -26,6 +26,7 @@ $stmt->execute([$id]);
 <head>
     <meta charset="UTF-8">
     <title>Demande de <?= htmlspecialchars($demande['nom']) ?></title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <h1>Demande de <?= htmlspecialchars($demande['nom']) ?></h1>
