@@ -6,6 +6,7 @@ if (isset($_SESSION['admin_id'])) {
     header("Location: dashboard.php");
     exit();
 }
+
 $erreur = '';
 if ($_SERVER['REQUEST_METHOD']==='POST'){
     verifier_token_csrf($_POST['csrf_token']??'');
@@ -33,6 +34,7 @@ $token = generer_token_csrf();
 <head>
     <meta charset="UTF-8">
     <title>Connexion Admin</title>
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
 <h1>Connexion</h1>

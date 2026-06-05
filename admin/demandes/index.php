@@ -15,6 +15,7 @@ $demandes = $pdo->query('SELECT * FROM demandes_projet ORDER BY date_demande DES
 <head>
     <meta charset="UTF-8">
     <title>Demandes de projet</title>
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
 <h1>Demandes de projet</h1>

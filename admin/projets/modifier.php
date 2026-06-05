@@ -60,6 +60,7 @@ $token = generer_token_csrf();
 <head>
     <meta charset="UTF-8">
     <title>Modifier un projet</title>
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
 <h1>Modifier le projet</h1>

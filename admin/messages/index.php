@@ -15,6 +15,7 @@ $messages=$pdo->query('SELECT * FROM messages ORDER BY date DESC')->fetchAll(PDO
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages de contact</title>
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
     <h1>Messages de contact</h1>
