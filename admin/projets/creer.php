@@ -49,7 +49,7 @@ $token = generer_token_csrf();
 <head>
     <meta charset="UTF-8">
     <title>Créer un projet</title>
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <h1>Nouveau projet</h1>

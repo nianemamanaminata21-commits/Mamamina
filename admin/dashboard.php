@@ -24,7 +24,7 @@ $demandes = $pdo->query('SELECT * FROM demandes_projet ORDER BY date_demande DES
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <h1>Bonjour, <?= htmlspecialchars($_SESSION['admin_prenom']) ?> !</h1>
