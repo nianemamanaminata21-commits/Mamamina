@@ -72,6 +72,8 @@ $token = generer_token_csrf();
     <p class="success">Votre message a été envoyé avec succès !</p>
 <?php endif; ?>
         <form method="POST">
+            <input type="hidden" name="csrf_token" value="<?= $token ?>">
+            <input type="hidden" name="form_contact" value="1">
             <input type="text" name="prenom" placeholder="Prénom" required>
             <input type="text" name="nom" placeholder="Nom" required>
             <input type="email" name="email" placeholder="Email" required>
@@ -90,7 +92,7 @@ $token = generer_token_csrf();
 
     <h2>Demande de projet</h2>
     <?php
-if (isset($_POST['demande_projet'])) {
+if (isset($_POST['form_demande'])) {
    $demande = [
        'nom'         => nettoyer($_POST['nom']         ?? ''),
        'email'       => nettoyer($_POST['email']       ?? ''),
@@ -101,7 +103,8 @@ if (isset($_POST['demande_projet'])) {
 }
 ?>
     <form method="POST" class="form-contact">
-    
+    <input type="hidden" name="csrf_token" value="<?= $token ?>">
+    <input type="hidden" name="form_demande" value="1">
         <input type="text" name="nom" placeholder="Votre nom" required>
     
         <input type="email" name="email" placeholder="Votre email" required>
