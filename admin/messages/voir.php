@@ -27,7 +27,7 @@ $stmt->execute([$id]);
 <head>
     <meta charset="UTF-8">
     <title>Message de <?= htmlspecialchars($message['nom']) ?></title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
 <h1>Message de <?= htmlspecialchars($message['nom']) ?></h1>

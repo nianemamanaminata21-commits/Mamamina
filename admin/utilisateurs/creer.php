@@ -39,7 +39,7 @@ $token = generer_token_csrf();
 <head>
     <meta charset="UTF-8">
     <title>Nouvel administrateur</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
 <h1>Nouvel administrateur</h1>

@@ -26,9 +26,9 @@ $stmt->execute([$id]);
 <head>
     <meta charset="UTF-8">
     <title>Demande de <?= htmlspecialchars($demande['nom']) ?></title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
-<body>
+<body
 <h1>Demande de <?= htmlspecialchars($demande['nom']) ?></h1>
 <p><strong>Email :</strong> <?= htmlspecialchars($demande['email']) ?></p>
 <p><strong>Type de projet :</strong> <?= htmlspecialchars($demande['type_projet']) ?></p>
