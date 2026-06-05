@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_id'])) {
     header('Location: ../connexion.php');
     exit;
 }
-$messages=$pdo->query('SELECT * FROM messages_contact ORDER BY date DESC')->fetchAll(PDO::FETCH_ASSOC);
+$messages=$pdo->query('SELECT * FROM messages_contact ORDER BY date_envoi DESC')->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,9 +36,9 @@ $messages=$pdo->query('SELECT * FROM messages_contact ORDER BY date DESC')->fetc
                 <td><?= htmlspecialchars($message['nom']) ?></td>
                 <td><?= htmlspecialchars($message['email']) ?></td>
                 <td><?= htmlspecialchars($message['message']) ?></td>
-                <td><?= htmlspecialchars($message['date']) ?></td>
-                <td><?= htmlspecialchars($message['statut']) ?></td>
-                <td><?= $message['statut'] === 'non lu' ? '<strong>Non lu</strong>' : 'Lu' ?></td>
+                <td><?= htmlspecialchars($message['date_envoi']) ?></td>
+                <td><?= htmlspecialchars($message['lu']) ?></td>
+                <td><?= $message['lu'] === 0 ? '<strong>Non lu</strong>' : 'Lu' ?></td>
                 <td>
                     <a href="modifier.php?id=<?= $message['id'] ?>">Modifier</a>
                     <a href="supprimer.php?id=<?= $message['id'] ?>">Supprimer</a>
